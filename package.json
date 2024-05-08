@@ -1,8 +1,11 @@
 {
   "name": "metsu-lang",
-  "displayName": "Metsu Lang",
+  "displayName": "Metsu Lang Support",
   "description": "Syntax highlighting for Metsu programming language",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "repository": "https://github.com/JoshnaksPNG/Metsu-VSCode-Extension",
+  "publisher": "MetsuLanguage",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.89.0"
   },
