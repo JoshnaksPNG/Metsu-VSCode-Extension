@@ -1,0 +1,25 @@
+{
+  "name": "metsu-lang",
+  "displayName": "Metsu Lang",
+  "description": "Syntax highlighting for Metsu programming language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "metsu",
+      "aliases": ["Metsu", "metsu"],
+      "extensions": [".mtsu"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "metsu",
+      "scopeName": "source.mtsu",
+      "path": "./syntaxes/metsu.tmLanguage.json"
+    }]
+  }
+}

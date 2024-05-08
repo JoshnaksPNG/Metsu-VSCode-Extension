@@ -1,0 +1,142 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Metsu",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#type-identifier"
+		},
+		{
+			"include": "#type-modifier"
+		},
+		{
+			"include": "#special-vars"
+		},
+		{
+			"include": "#comments-block"
+		},
+		{
+			"include": "#meta-stmts"
+		},
+		{
+			"include": "#function-identifier"
+		},
+		{
+			"include": "#variable-identifier"
+		},
+		{
+			"include": "#comments-inline"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.metsu",
+					"match": "\\b(if|else|while|do|for|return)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.metsu",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.metsu",
+					"match": "\\\\."
+				}
+			]
+		},
+		"type-identifier": {
+			"patterns": [
+				{
+					"name": "storage.type.primitve.metsu",
+					"match": "\\b(int|float|char|bool|string|obj|void|func|proc)\\b"
+				}
+			]
+		},
+		"type-modifier": {
+			"patterns": [
+				{
+					"name": "storage.modifier.metsu",
+					"match": "\\b(mut|const)\\b"
+				}
+			]
+		},
+		"special-vars": {
+			"patterns": [
+				{
+					"name": "constant.language.metsu",
+					"match": "(?<!\\$)\\b(true|false|null)\\b(?!\\$)"
+				},
+				{
+					"name": "constant.numeric.metsu",
+					"match": "(0[bB][0-1]+)|(0[qQ][0-3]+)|(0[oO][0-7]+)|(0[xX][0-9a-fA-F]+)|(0[vV][0-9a-vA-V]+)|(0[zZ][0-9a-zA-Z]+)|([0-9]+)"
+				}
+			]
+		},
+		"comments-block": {
+			"patterns": [
+				{
+					"name": "comment.block.metsu",
+					"begin": "/\\*",
+					"end": "\\*/",
+					"patterns": [
+						{
+							"include": "#comments-block"
+						}
+					]
+				}
+			]
+		},
+		"meta-stmts": {
+			"patterns": [
+				{
+					"name": "meta.preprocessor.metsu",
+					"match": "^(#.*)$"
+				}
+			]
+		},
+		"function-identifier": {
+			"patterns": [
+				{
+					"match": "([_$]*[a-z][a-zA-Z0-9_$]*)(<(?:[a-zA-Z0-9_$<>?]|,\\s*|\\s+extends\\s+)+>)?[!?]?\\(",
+					"captures": {
+						"1": {
+							"name": "entity.name.function.metsu"
+						},
+						"2": {
+							"patterns": [
+								{
+									"include": "#type-args"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"comments-inline": {
+			"patterns": [
+				{
+					"include": "#comments-block"
+				},
+				{
+					"match": "((//).*)$",
+					"captures": {
+						"1": {
+							"name": "comment.line.double-slash.dart"
+						}
+					}
+				}
+			]
+		}
+	},
+	"scopeName": "source.mtsu"
+}
